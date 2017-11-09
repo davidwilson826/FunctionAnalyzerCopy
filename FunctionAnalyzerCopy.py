@@ -56,7 +56,7 @@ CONCAvITY
 c_up = []
 c_down = []
 
-for i in f_data:
+for i in range(len(f_data)):
     if f_data[i][3] > 0:
         c_up.append(f_data[i][0])
     elif f_data[i][3] < 0:
