@@ -9,7 +9,7 @@ operations = ['+','-','*','/']
 f_list = []
 i = 0
 
-while i < length:
+while i < len(f_string)-1:
     if f_string[i] in n_test:
         num = ''
         while f_string[i] in n_test:
