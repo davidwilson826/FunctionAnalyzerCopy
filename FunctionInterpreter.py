@@ -1,5 +1,5 @@
 f_string = "3*x^2+12*x"#input("Please enter function ")
-length = range(len(f_string))
+#length = range(len(f_string))
 
 #f_list = [f_string[i] for i in length]
 
@@ -13,7 +13,7 @@ while i < len(f_string)-1:
     if f_string[i] in n_test:
         num = ''
         while f_string[i] in n_test:
-            num.append(f_string[i])
+            num += f_string[i]
             i += 1
         f_list.append(float(num))
     else:
