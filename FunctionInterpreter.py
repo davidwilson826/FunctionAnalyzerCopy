@@ -1,6 +1,5 @@
 f_string = "3*x^2+12*x+11"#input("Please enter function ")
 
-
 n_test = ['0','1','2','3','4','5','6','7','8','9','10','.']
 operations = ['+','-','*','/']
 
@@ -20,6 +19,22 @@ while i < len(f_string):
 
 print(f_list)
 
+def op(f_list,op_i):
+    op = f_list[op_i]
+    a = f_list[op_i-1]
+    b = f_list[op_i+1]
+    
+    if op == '+':
+        result = a+b
+    elif op == '-':
+        result = a-b
+    elif op == '*':
+        result = a*b
+    elif op == '/':
+        result = a/b
+    elif op == '^':
+        result = a**b
+
 def f(x):    
     i = 0
     while i < len(f_list):
@@ -28,6 +43,9 @@ def f(x):
         i += 1
             
     print(f_list)
+    
+    for i in f_list:
+        if f_list[op_index
     
     
 f(1)
