@@ -34,6 +34,8 @@ def op(f_list,op_i):
         result = a/b
     elif op == '^':
         result = a**b
+        
+    f_list = f_list[:op_i]+result+f_list[:op_i+2]
 
 def f(x):    
     i = 0
