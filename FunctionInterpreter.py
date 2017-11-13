@@ -19,6 +19,4 @@ while i < len(f_string)-1:
     else:
         f_list.append(f_string[i])
     
-    num.append(f_string[i])
-    
 print(f_list)
