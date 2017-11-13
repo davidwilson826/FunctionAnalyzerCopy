@@ -35,7 +35,7 @@ def op(f_list,op_i):
     elif op == '^':
         result = a**b
         
-    f_list = f_list[:op_i].append(result)t+f_list[:op_i+2]
+    f_list = f_list[:op_i]+[result]+f_list[:op_i+2]
 
 def f(x):    
     i = 0
@@ -49,8 +49,7 @@ def f(x):
     for i in f_list:
         if i in operations:
             op(f_list,f_list.index(i))
-            
-    print(f_list)
+            print(f_list)
     
     
 f(1)
