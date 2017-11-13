@@ -36,8 +36,10 @@ def op(f_list,op_i):
         result = a**b
         
     f_list = f_list[:op_i]+[result]+f_list[:op_i+2]
+    
+    return f_list
 
-def f(x):    
+def f(f_list,x):    
     i = 0
     while i < len(f_list):
         if f_list[i] == 'x':
@@ -46,10 +48,11 @@ def f(x):
             
     print(f_list)
     
-    for i in f_list:
-        if i in operations:
-            op(f_list,f_list.index(i))
-            print(f_list)
+    i = 0
+    while i < len(f_list):
+        if f_list[i] in operations:
+           f_list = op(f_list,i)
+        i += 1
     
     
-f(1)
+f(f_list,1)
