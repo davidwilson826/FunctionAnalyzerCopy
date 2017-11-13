@@ -18,5 +18,6 @@ while i < len(f_string)-1:
         f_list.append(float(num))
     else:
         f_list.append(f_string[i])
+        i += 1
     
 print(f_list)
