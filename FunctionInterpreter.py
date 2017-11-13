@@ -1,11 +1,12 @@
 f_string = "3*x^2+12*x"#input("Please enter function ")
 length = range(len(f_string))
 
-f_list = [f_string[i] for i in length]
+#f_list = [f_string[i] for i in length]
 
 n_test = ['0','1','2','3','4','5','6','7','8','9','10','.']
 operations = ['+','-','*','/']
 
+f_list = []
 i = 0
 
 while i < length:
@@ -19,4 +20,5 @@ while i < length:
         f_list.append(f_string[i])
     
     num.append(f_string[i])
+    
 print(f_list)
