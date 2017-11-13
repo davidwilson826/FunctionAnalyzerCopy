@@ -47,7 +47,7 @@ def f(x):
     print(f_list)
     
     for i in f_list:
-        if f_list[i] in operations:
+        if i in operations:
             op(f_list,f_list.find(i))
             
     print(f_list)
