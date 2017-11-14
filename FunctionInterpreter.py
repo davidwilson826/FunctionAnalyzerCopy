@@ -1,6 +1,7 @@
 from math import sin, cos, tan#, csc, sec, cot
 
 f_string = input("Please enter function ")#"3*x^2-12*x+1.1+1/x"#input("Please enter function ")
+x_val = input("Please enter x value ")
 
 n_test = ['0','1','2','3','4','5','6','7','8','9','10','.']
 t_test = ['s','c','t']
@@ -36,7 +37,7 @@ def f(f_list,x):
             
     print(f_list)
     
-    for tf in ['sin','cos','tan']:
+    for tf in ['sin','cos','tan','csc','sec','cot']:
         while tf in f_list:
             t_i = f_list.index(tf)
             if tf == 'sin':
@@ -45,6 +46,12 @@ def f(f_list,x):
                 result = cos(f_list[t_i+1])
             elif tf == 'tan':
                 result = tan(f_list[t_i+1])
+            elif tf == 'csc':
+                result = 1/sin(f_list[t_i+1])
+            elif tf == 'sec':
+                result = 1/cos(f_list[t_i+1])
+            elif tf == 'cot':
+                result = 1/tan(f_list[t_i+1])
             f_list = f_list[:t_i]+[result]+f_list[t_i+2:]
             print(f_list)
     while '^' in f_list:
@@ -73,4 +80,4 @@ def f(f_list,x):
         f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
         print(f_list)
     
-f(f_list,2)
+f(f_list,x_val)
