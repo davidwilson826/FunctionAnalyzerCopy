@@ -1,7 +1,7 @@
-from math import sin, cos, tan#, csc, sec, cot
+from math import sin, cos, tan, pi, e
 
 f_string = input("Please enter function ")#"3*x^2-12*x+1.1+1/x"#input("Please enter function ")
-x_val = input("Please enter x value ")
+x_val = float(input("Please enter x value "))
 
 n_test = ['0','1','2','3','4','5','6','7','8','9','10','.']
 t_test = ['s','c','t']
