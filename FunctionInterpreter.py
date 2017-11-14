@@ -53,8 +53,9 @@ def f(f_list,x):
         a = f_list[op_i-1]
         b = f_list[op_i+1]
         result = a**b
-        f_list = f_list[:op_i]+[result]+f_list[:op_i+2]
+        f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
         print(f_list)
+        return
         
 '''
     i = 0
