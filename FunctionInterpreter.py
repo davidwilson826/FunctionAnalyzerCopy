@@ -22,6 +22,12 @@ while i < len(f_string):
             trig += f_string[i]
             i += 1
         f_list.append(trig)
+    elif f_string[i] == 'p':
+        f_list.append(pi)
+        i += 1
+    elif f_string[i] == 'e':
+        f_list.append(e)
+        i += 1
     else:
         f_list.append(f_string[i])
         i += 1
