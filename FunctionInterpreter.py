@@ -17,11 +17,11 @@ while i < len(f_string):
             i += 1
         f_list.append(float(num))
     elif f_string[i] in t_test:
-        trig = ''
+        tf = ''
         for x in range(3):
-            trig += f_string[i]
+            tf += f_string[i]
             i += 1
-        f_list.append(trig)
+        f_list.append(tf)
     elif f_string[i] == 'p':
         f_list.append(pi)
         i += 1
