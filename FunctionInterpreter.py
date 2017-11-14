@@ -1,4 +1,4 @@
-from math import sin, cos, tan, csc, sec, cot
+from math import sin, cos, tan#, csc, sec, cot
 
 f_string = input("Please enter function ")#"3*x^2-12*x+1.1+1/x"#input("Please enter function ")
 
@@ -36,11 +36,17 @@ def f(f_list,x):
             
     print(f_list)
     
-    while 'sin' in f_list:
-        t_i = f_list.index('sin')
-        result = sin(f_list[t_i+1])
-        f_list = f_list[:t_i]+[result]+f_list[t_i+2:]
-    
+    for x in ['sin','cos','tan']:
+        while x in f_list:
+            t_i = f_list.index(x)
+            if x == 'sin':
+                result = sin(f_list[t_i+1])
+            elif x == 'cos':
+                result = cos(f_list[t_i+1])
+            elif x == 'tan':
+                result = tan(f_list[t_i+1])
+            f_list = f_list[:t_i]+[result]+f_list[t_i+2:]
+            print(f_list)
     while '^' in f_list:
         op_i = f_list.index('^')
         result = f_list[op_i-1]**f_list[op_i+1]
