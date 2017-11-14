@@ -1,4 +1,4 @@
-f_string = "3*x^2+12*x+11"#input("Please enter function ")
+f_string = "3*x^2+12*x+11+1/x"#input("Please enter function ")
 
 n_test = ['0','1','2','3','4','5','6','7','8','9','10','.']
 operations = ['+','-','*','/']
@@ -50,12 +50,18 @@ def f(f_list,x):
     
     while '^' in f_list:
         op_i = f_list.index('^')
-        a = f_list[op_i-1]
-        b = f_list[op_i+1]
-        result = a**b
+        result = f_list[op_i-1]**f_list[op_i+1]
         f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
         print(f_list)
-        return
+    while '/' in f_list:
+        i = f_list.index('/')
+        f_list[i+1] = 1/f_list[i+1]
+        f_list[i] = '*'
+    #while '*' in f_list:
+    #    op_i = f_list.index('^')
+    #    result = f_list[op_i-1]**f_list[op_i+1]
+    #    f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
+    #    print(f_list)
         
 '''
     i = 0
@@ -65,4 +71,4 @@ def f(f_list,x):
         i += 1
 '''
     
-f(f_list,1)
+f(f_list,2)
