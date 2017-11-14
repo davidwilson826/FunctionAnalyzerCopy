@@ -36,14 +36,14 @@ def f(f_list,x):
             
     print(f_list)
     
-    for x in ['sin','cos','tan']:
-        while x in f_list:
-            t_i = f_list.index(x)
-            if x == 'sin':
+    for tf in ['sin','cos','tan']:
+        while tf in f_list:
+            t_i = f_list.index(tf)
+            if tf == 'sin':
                 result = sin(f_list[t_i+1])
-            elif x == 'cos':
+            elif tf == 'cos':
                 result = cos(f_list[t_i+1])
-            elif x == 'tan':
+            elif tf == 'tan':
                 result = tan(f_list[t_i+1])
             f_list = f_list[:t_i]+[result]+f_list[t_i+2:]
             print(f_list)
