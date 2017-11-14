@@ -52,6 +52,7 @@ def f(f_list,x):
         op_i = f_list.index('^')
         a = f_list[op_i-1]
         b = f_list[op_i+1]
+        result = a**b
         f_list = f_list[:op_i]+[result]+f_list[:op_i+2]
         print(f_list)
         
