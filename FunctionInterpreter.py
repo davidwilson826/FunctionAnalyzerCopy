@@ -1,4 +1,4 @@
-f_string = "3*x^2-12*x+1.1+1/x"#input("Please enter function ")
+f_string = input("Please enter function ")#"3*x^2-12*x+1.1+1/x"#input("Please enter function ")
 
 n_test = ['0','1','2','3','4','5','6','7','8','9','10','.']
 
