@@ -1,3 +1,5 @@
+from math import sin, cos, tan, csc, sec, cot
+
 f_string = input("Please enter function ")#"3*x^2-12*x+1.1+1/x"#input("Please enter function ")
 
 n_test = ['0','1','2','3','4','5','6','7','8','9','10','.']
@@ -33,6 +35,11 @@ def f(f_list,x):
         i += 1
             
     print(f_list)
+    
+    while 'sin' in f_list:
+        t_i = f_list.index('sin')
+        result = sin(f_list[t_i+1])
+        f_list = f_list[:t_i]+[result]+f_list[t_i+2:]
     
     while '^' in f_list:
         op_i = f_list.index('^')
