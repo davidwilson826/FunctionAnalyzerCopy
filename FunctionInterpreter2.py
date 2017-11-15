@@ -51,7 +51,8 @@ def evaluate(f_list):
         group = f_list[i_open+1:i_close]
         print(group)
         print(evaluate(group))
-        f_list = f_list[:i_open-1]+[evaluate(group)]+f_list[i_close+2:]
+        f_list = f_list[:i_open]+[evaluate(group)]+f_list[i_close+1:]
+        print(f_list)
     for tf in ['sin','cos','tan','csc','sec','cot']:
         while tf in f_list:
             t_i = f_list.index(tf)
