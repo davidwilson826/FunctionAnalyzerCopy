@@ -42,11 +42,16 @@ def f(f_list,x):
         i += 1
             
     print(f_list)
+    return evaluate(f_list)
     
+def evaluate(f_list):
     while '(' in f_list:
-        group = f_list[f_list.index('(')+1:f_list.index(')')]
+        i_open = f_list.index('(')
+        i_close = f_list.index(')')
+        group = f_list[i_open+1:i_close]
         print(group)
-        f_list[f_list.index('(')] = 1
+        print(evaluate(group))
+        f_list = f_list[:i_open-1]+[evaluate(group)]+f_list[i_close+2:]
     for tf in ['sin','cos','tan','csc','sec','cot']:
         while tf in f_list:
             t_i = f_list.index(tf)
@@ -91,4 +96,5 @@ def f(f_list,x):
         print(f_list)
     return f_list[0]
     
-f(f_list,x_val)
+#f(f_list,x_val)
+print(f(f_list,x_val))
