@@ -46,6 +46,7 @@ def f(f_list,x):
     while '(' in f_list:
         group = f_list[f_list.index('('):f_list.index(')')+1]
         print(group)
+        f_list[f_list.index('(')] = 1
     for tf in ['sin','cos','tan','csc','sec','cot']:
         while tf in f_list:
             t_i = f_list.index(tf)
