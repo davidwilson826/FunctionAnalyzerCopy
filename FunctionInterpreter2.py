@@ -31,9 +31,10 @@ while i < len(f_string):
     else:
         f_list.append(f_string[i])
         i += 1
-    while '_' in f_list:
-        i_neg = f_list.index('_')
-        f_list = f_list[:i_neg]+[-1*f_list[i_neg+1]]+f_list[i_neg+2:]
+
+while '_' in f_list:
+    i_neg = f_list.index('_')
+    f_list = f_list[:i_neg]+[-1*f_list[i_neg+1]]+f_list[i_neg+2:])
 
 #print(f_list)
 
