@@ -41,7 +41,7 @@ def f(f_list,x):
             f_list[i] = x
         i += 1
             
-    print(f_list)
+    #print(f_list)
     return evaluate(f_list)
     
 def evaluate(f_list):
@@ -49,10 +49,10 @@ def evaluate(f_list):
         i_open = f_list.index('(')
         i_close = f_list.index(')')
         group = f_list[i_open+1:i_close]
-        print(group)
-        print(evaluate(group))
+        #print(group)
+        #print(evaluate(group))
         f_list = f_list[:i_open]+[evaluate(group)]+f_list[i_close+1:]
-        print(f_list)
+        #print(f_list)
     for tf in ['sin','cos','tan','csc','sec','cot']:
         while tf in f_list:
             t_i = f_list.index(tf)
@@ -69,32 +69,32 @@ def evaluate(f_list):
             elif tf == 'cot':
                 result = 1/tan(f_list[t_i+1])
             f_list = f_list[:t_i]+[result]+f_list[t_i+2:]
-            print(f_list)
+            #print(f_list)
     while '^' in f_list:
         op_i = f_list.index('^')
         result = f_list[op_i-1]**f_list[op_i+1]
         f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
-        print(f_list)
+        #print(f_list)
     while '/' in f_list:
         i = f_list.index('/')
         f_list[i+1] = 1/f_list[i+1]
         f_list[i] = '*'
-        print(f_list)
+        #print(f_list)
     while '*' in f_list:
         op_i = f_list.index('*')
         result = f_list[op_i-1]*f_list[op_i+1]
         f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
-        print(f_list)
+        #print(f_list)
     while '-' in f_list:
         i = f_list.index('-')
         f_list[i+1] *= -1
         f_list[i] = '+'
-        print(f_list)
+        #print(f_list)
     while '+' in f_list:
         op_i = f_list.index('+')
         result = f_list[op_i-1]+f_list[op_i+1]
         f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
-        print(f_list)
+        #print(f_list)
     return f_list[0]
     
 #f(f_list,x_val)
