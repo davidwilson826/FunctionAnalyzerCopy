@@ -62,9 +62,8 @@ while i < len(f_string): #Looks through string, examines each item, and adds it 
         f_list.append(f_string[i])
         i += 1
 
-#print(f_list)
-
 def f(f_list,x): #Defines function f
+    copy = f_list[:]
     i = 0
     while i < len(f_list): #Replaces 'x' with numerical value of x
         if f_list[i] == 'x':
@@ -75,18 +74,15 @@ def f(f_list,x): #Defines function f
         i_neg = f_list.index('_')
         f_list = f_list[:i_neg]+[-1*f_list[i_neg+1]]+f_list[i_neg+2:]
             
-    #print(f_list)
     return evaluate(f_list) #Calls the evaluate function to calculate the result - returns this result
+    f_list = copy[:]
     
 def evaluate(f_list): #Defines evalute function, which can compute any list using proper order of operates 
     while '(' in f_list: #Searches for parentheses (loops until all parentheses have been eliminated)
         i_open = f_list.index('(')
         i_close = f_list.index(')')
         group = f_list[i_open+1:i_close] #Creates "group," which is a new list consisting of the contents of parentheses
-        #print(group)
-        #print(evaluate(group))
         f_list = f_list[:i_open]+[evaluate(group)]+f_list[i_close+1:] #Calls the evaluate function for "group," and inserts the result into the list where the parentheses and their contents orginally were
-        #print(f_list)
     for tf in ['sin','cos','tan','csc','sec','cot']: 
         while tf in f_list: #Looks for trig functions and evaluates all of them until none are left
             t_i = f_list.index(tf)
@@ -103,32 +99,26 @@ def evaluate(f_list): #Defines evalute function, which can compute any list usin
             elif tf == 'cot':
                 result = 1/tan(f_list[t_i+1])
             f_list = f_list[:t_i]+[result]+f_list[t_i+2:] #Inserts result of trig calculate into list and eliminates original function and number
-            #print(f_list)
     while '^' in f_list: #Evaluates all exponents
         op_i = f_list.index('^')
         result = f_list[op_i-1]**f_list[op_i+1] 
         f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:] #Inserts calculated result and eliminates base, exponent symbol, and power
-        #print(f_list)
     while '/' in f_list: #Replaces division with multiplication by the recipricol
         i = f_list.index('/')
         f_list[i+1] = 1/f_list[i+1]
         f_list[i] = '*'
-        #print(f_list)
     while '*' in f_list: #Evaluates all multiplication (same method as exponents)
         op_i = f_list.index('*')
         result = f_list[op_i-1]*f_list[op_i+1]
         f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
-        #print(f_list)
     while '-' in f_list: #Replaces subtraction with addition of the opposite
         i = f_list.index('-')
         f_list[i+1] *= -1
         f_list[i] = '+'
-        #print(f_list)
     while '+' in f_list: #Evaluates all addition (same method as exponents and multiplication)
         op_i = f_list.index('+')
         result = f_list[op_i-1]+f_list[op_i+1]
         f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
-        #print(f_list)
     return f_list[0] #List should now contain only one number, which represents the calculated result - function returns this number
     
 step = 10
@@ -142,9 +132,10 @@ for x in x_values:
     f_data.append([x,f(f_list,x),(f(f_list,x+calc_precision)-f(f_list,x-calc_precision))/2*calc_precision])
     
 print(f_data)
+print(f_list)
 """
 EXTREMA
-"""
+
 
 for i in range(len(f_data)-2):
     if f_data[i][2] < 0 and f_data[i+1][2] <= 0 and f_data[i+2][2] > 0:
@@ -156,13 +147,13 @@ for i in range(len(f_data)-2):
 """
 """
 
-"""
+
 INC/DEC INTERVALS
 """
 
 """
 CONCAvITY
-"""
+
 
 c_up = []
 c_down = []
@@ -175,9 +166,9 @@ for i in range(len(f_data)):
         
 print(c_up, c_down)
 
-"""
+
 POINTS OF INFLECTION
-"""
+
 for i in range(len(f_data)-2):
     if f_data[i][3] < 0 and f_data[i+1][3] <= 0 and f_data[i+2][3] > 0:
         print("Point of inflection at x = "+str(f_data[i+1][0]))
