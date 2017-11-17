@@ -136,17 +136,15 @@ print(f(f_list,x_val))
 
 from math import sin, pi
 
-step = 100
+step = 10
 calc_precision = 0.0001
 
 x_values = [x/step for x in list(range(-7*step,7*step+1))]
 
 f_data = []
 
-fp = lambda a: (sin(a+calc_precision)-sin(a-calc_precision))/(2*calc_precision)
-
 for x in x_values:
-    f_data.append([x,sin(x),fp(x),(fp(x+calc_precision)-fp(x-calc_precision))/(2*calc_precision)])
+    f_data.append([x,f(f_list,x),(f(f_list,x+calc_precision)-f(f_list,x-calc_precision))/2*calc_precision])
     
 print(f_data)
 """
