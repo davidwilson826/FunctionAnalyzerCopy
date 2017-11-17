@@ -124,7 +124,7 @@ def evaluate(f_list): #Defines evalute function, which can compute any list usin
         f_list = f_list[:op_i-1]+[result]+f_list[op_i+2:]
     return f_list[0] #List should now contain only one number, which represents the calculated result - function returns this number
     
-step = 10
+step = 100
 calc_precision = 0.0001
 
 x_values = [x/step for x in list(range(-3*step,3*step+1))]
