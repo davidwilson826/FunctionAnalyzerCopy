@@ -30,7 +30,7 @@ with no symbol to imply multiplication (ex. write 2*(x+1), NOT 2(x+1))
 from math import sin, cos, tan, pi, e
 
 f_string = input("Please enter function ")
-x_val = float(input("Please enter x value "))
+#x_val = float(input("Please enter x value "))
 
 n_test = ['0','1','2','3','4','5','6','7','8','9','10','.']
 t_test = ['s','c','t']
@@ -131,11 +131,6 @@ def evaluate(f_list): #Defines evalute function, which can compute any list usin
         #print(f_list)
     return f_list[0] #List should now contain only one number, which represents the calculated result - function returns this number
     
-#f(f_list,x_val)
-print(f(f_list,x_val))
-
-from math import sin, pi
-
 step = 10
 calc_precision = 0.0001
 
