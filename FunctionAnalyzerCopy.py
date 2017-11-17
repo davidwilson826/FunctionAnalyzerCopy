@@ -63,7 +63,7 @@ while i < len(f_string): #Looks through string, examines each item, and adds it 
         i += 1
 
 def f(f_list,x): #Defines function f
-    copy = f_list[:]
+    copy = f_list
     i = 0
     while i < len(f_list): #Replaces 'x' with numerical value of x
         if f_list[i] == 'x':
@@ -74,8 +74,7 @@ def f(f_list,x): #Defines function f
         i_neg = f_list.index('_')
         f_list = f_list[:i_neg]+[-1*f_list[i_neg+1]]+f_list[i_neg+2:]
             
-    return evaluate(f_list) #Calls the evaluate function to calculate the result - returns this result
-    f_list = copy[:]
+    return evaluate(copy) #Calls the evaluate function to calculate the result - returns this result
     
 def evaluate(f_list): #Defines evalute function, which can compute any list using proper order of operates 
     while '(' in f_list: #Searches for parentheses (loops until all parentheses have been eliminated)
@@ -124,11 +123,14 @@ def evaluate(f_list): #Defines evalute function, which can compute any list usin
 step = 10
 calc_precision = 0.0001
 
-x_values = [x/step for x in list(range(-7*step,7*step+1))]
+x_values = [x/step for x in list(range(-3*step,3*step+1))]
 
 f_data = []
 
+copy = f_list
+
 for x in x_values:
+    f_list = copy
     f_data.append([x,f(f_list,x),(f(f_list,x+calc_precision)-f(f_list,x-calc_precision))/2*calc_precision])
     
 print(f_data)
@@ -174,3 +176,4 @@ for i in range(len(f_data)-2):
         print("Point of inflection at x = "+str(f_data[i+1][0]))
     elif f_data[i][3] > 0 and f_data[i+1][3] >= 0 and f_data[i+2][3] < 0:
         print("Point of inflection at x = "+str(f_data[i+1][0]))
+"""
