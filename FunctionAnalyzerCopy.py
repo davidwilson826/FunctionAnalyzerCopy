@@ -144,14 +144,14 @@ for i in range(len(f_data)-2):
         print("Local max at x = "+str(f_data[i+1][0]))
     #else:
     #    print("There are no local max's in the interval")
-"""
-"""
+
+
 
 
 INC/DEC INTERVALS
-"""
 
-"""
+
+
 CONCAvITY
 
 
