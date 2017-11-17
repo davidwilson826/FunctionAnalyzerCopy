@@ -18,6 +18,8 @@ Hit "GO" and enter a function into the input box
 -Denote operations using the following symbols: '+' (addition), '-' (subtraction),
 '*' (multiplication), '/' (division), '^' exponent
 -Note that '-' denotes subtraction; use '_' as a negative sin (ex. _3*x represents -3x)
+-Only enter negative signs before numbers, not parentheses or trig functions 
+(ex. write -(x+2) as _1*(x+2), write -sinx as _1*sinx)
 -Always enter the '*' sign - do NOT write numbers/variables/groups next to each other
 with no symbol to imply multiplication (ex. write 2*(x+1), NOT 2(x+1))
 -Denote trig functions using their appropriate three-letter abbreviations
@@ -35,7 +37,7 @@ f_string = input("Please enter function ")
 n_test = ['0','1','2','3','4','5','6','7','8','9','10','.']
 t_test = ['s','c','t']
 
-f_list = [] #Defines f_list, which will contain items representing the various "pieces" (numbers, x, operations, etc.) of the function
+fl_orig = [] #Defines fl_orig, which will contain items representing the various "pieces" (numbers, x, operations, etc.) of the function
 
 i = 0
 
@@ -45,38 +47,40 @@ while i < len(f_string): #Looks through string, examines each item, and adds it 
         while i < len(f_string) and f_string[i] in n_test:
             num += f_string[i]
             i += 1
-        f_list.append(float(num))
+        fl_orig.append(float(num))
     elif f_string[i] in t_test: #Adds three-letter representations of trig functions (ex. sin) as list items
         tf = ''
         for x in range(3):
             tf += f_string[i]
             i += 1
-        f_list.append(tf)
+        fl_orig.append(tf)
     elif f_string[i] == 'p': #Replaces letter p with decimal representation of pi, adds it to list
-        f_list.append(pi)
+        fl_orig.append(pi)
         i += 1
     elif f_string[i] == 'e': #Replaces letter e with decimal representation of Euler's number, adds it to list
-        f_list.append(e)
+        fl_orig.append(e)
         i += 1
     else: #Adds items not in the above categories to list (includes 'x' and operation symbols)
-        f_list.append(f_string[i])
+        fl_orig.append(f_string[i])
         i += 1
+        
+print(fl_orig)
 
-def f(f_list,x): #Defines function f
-    copy = f_list
+def f(x): #Defines function f
+    global fl_orig
+    f_list = fl_orig[:] #Creates f_list, a copy of fl_orig (This is done so that the original list remains "intact" and can be reused)
     i = 0
     while i < len(f_list): #Replaces 'x' with numerical value of x
         if f_list[i] == 'x':
             f_list[i] = x
         i += 1
-        
+            
+    return evaluate(f_list) #Calls the evaluate function to calculate the result - returns this result
+    
+def evaluate(f_list): #Defines evalute function, which can compute any list using proper order of operates 
     while '_' in f_list: #Eliminates '_' and makes the number immediately after it negative
         i_neg = f_list.index('_')
         f_list = f_list[:i_neg]+[-1*f_list[i_neg+1]]+f_list[i_neg+2:]
-            
-    return evaluate(copy) #Calls the evaluate function to calculate the result - returns this result
-    
-def evaluate(f_list): #Defines evalute function, which can compute any list using proper order of operates 
     while '(' in f_list: #Searches for parentheses (loops until all parentheses have been eliminated)
         i_open = f_list.index('(')
         i_close = f_list.index(')')
@@ -127,14 +131,11 @@ x_values = [x/step for x in list(range(-3*step,3*step+1))]
 
 f_data = []
 
-copy = f_list
-
 for x in x_values:
-    f_list = copy
-    f_data.append([x,f(f_list,x),(f(f_list,x+calc_precision)-f(f_list,x-calc_precision))/2*calc_precision])
+    f_data.append([x,f(x),(f(x+calc_precision)-f(x-calc_precision))/(2*calc_precision)])
     
 print(f_data)
-print(f_list)
+#print(f_list)
 """
 EXTREMA
 
