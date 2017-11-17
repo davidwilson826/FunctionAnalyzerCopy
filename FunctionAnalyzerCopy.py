@@ -131,8 +131,10 @@ x_values = [x/step for x in list(range(-3*step,3*step+1))]
 
 f_data = []
 
+fp = lambda x: (f(x+calc_precision)-f(x-calc_precision))/(2*calc_precision)
+
 for x in x_values:
-    f_data.append([x,f(x),(f(x+calc_precision)-f(x-calc_precision))/(2*calc_precision)])
+    f_data.append([x,f(x),fp(x),(fp(x+calc_precision)-fp(x-calc_precision))/(2*calc_precision)])
     
 print(f_data)
 #print(f_list)
